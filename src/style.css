@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.projects-title {
+    grid-column: 2 / 3;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.side-bar {
+    background-color: #B8B8B8;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 15px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;
+    
+}
+
+ul {
+    list-style: none;
+    
+}
+
+li {
+    margin-top: 15px;
+}
+
+.links {
+    grid-row: 4;
+}
+
+.new {
+    height: 60px;
+    width: auto;
+    border: 1px solid white;
+    font-size: 20px;
+}
+
+.business-logo {
+    width: auto;
+    height: 35px;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+
+

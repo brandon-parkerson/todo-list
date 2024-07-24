@@ -2,24 +2,26 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  entry: './src/index.js',
+  mode: 'development',  // Set to 'development' for dev purposes
+  entry: './src/index.js',  // Entry point for your application
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,  // This will clean the output directory before each build
+    filename: '[name].js',  // Output filename pattern
+    path: path.resolve(__dirname, 'dist'),  // Output directory
+    clean: true,  // Clean the output directory before each build
   },
+  watch: true,  // Enable watch mode
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'dist'),  // Serve static files from 'dist' directory
     },
-    compress: true,
-    port: 9000,
-    open: true,  // This will open the browser after the server starts
+    compress: true,  // Enable gzip compression
+    port: 9000,  // Dev server port
+    open: true,  // Open browser after server starts
+    hot: true,  // Enable Hot Module Replacement
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',  // specify the template path here
+      template: './src/index.html',  // Path to your HTML template
     }),
   ],
   optimization: {
@@ -29,15 +31,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'],  // Use 'style-loader' and 'css-loader' for CSS files
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset/resource',  // Handle image assets
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: 'asset/resource',  // Handle font assets
       },
     ],
   },
