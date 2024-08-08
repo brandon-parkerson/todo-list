@@ -1,5 +1,6 @@
 import './style.css';
 import businessLogo from './images/business-logo.jpg';
+import { makeCard } from './card';
 
 const sideBar = document.querySelector(".side-bar");
 
@@ -13,13 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-function makeCard() {
-  const card = document.querySelector("#card1");
-  card.innerText = `Project One: content jfjddjffjd
-  jflsdjfffsfsdfsdf
-  fjsdfsdffd`;
-  
-};
 
 function newProjectListener() {
   const button = document.querySelector(".new");
@@ -41,6 +35,16 @@ function newDialog() {
 function dialogSubmitted(event) {
   const dialog = document.querySelector("dialog");
   const form = document.querySelector("form");
+
+  const title = form.querySelector("#title").value;
+  const description = form.querySelector("#description").value;
+  const date = form.querySelector("#date").value;
+  const priority = form.querySelector("#priority").checked;
+
+  const newCard = makeCard(title, description, date, priority);
+
+  addCardToPage(newCard);
+
   event.preventDefault();
   form.reset();
   
@@ -54,6 +58,21 @@ function cancelForm(event) {
   form.reset();
 
   dialog.close();
+};
+
+function addCardToPage(card) {
+  const content = document.querySelector(".content");
+
+  const cardElement = document.createElement("div");
+  cardElement.classList.add("card");
+    cardElement.innerHTML = `
+        <h3>${card.title}</h3>
+        <p>${card.description}</p>
+        <p>Due Date: ${card.date}</p>
+        <p>Priority: ${card.priority ? "High" : "Normal"}</p>
+    `;
+
+  content.appendChild(cardElement);
 };
 
 
