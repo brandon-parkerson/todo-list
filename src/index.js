@@ -70,7 +70,11 @@ function addCardToPage(card) {
         <p>${card.description}</p>
         <p>Due Date: ${card.date}</p>
         <p>Priority: ${card.priority ? "High" : "Normal"}</p>
+        <button class="delete">Delete</button>
     `;
+    cardElement.querySelector(".delete").addEventListener("click", function() {
+      content.removeChild(cardElement);
+  });
 
   content.appendChild(cardElement);
 };
