@@ -48,6 +48,10 @@ li {
     font-size: 20px;
 }
 
+.new:hover {
+    background-color: #dad7d7;
+}
+
 .business-logo {
     width: auto;
     height: 35px;
@@ -73,5 +77,6 @@ li {
     height: min-content;
     padding: 5px;
     width: 25%;
+    margin-right: 10px;
 }
 

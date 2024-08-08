@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = businessLogo;
 
     makeCard();
+    newProjectListener();
     
   });
 
@@ -18,4 +19,37 @@ function makeCard() {
   jflsdjfffsfsdfsdf
   fjsdfsdffd`;
   
-}
+};
+
+function newProjectListener() {
+  const button = document.querySelector(".new");
+  button.addEventListener("click", newDialog);
+};
+
+function newDialog() {
+  const content = document.querySelector(".content");
+  const dialog = document.createElement("dialog");
+  const submit = document.createElement("button");
+
+  submit.classList.add("dialog-submit");
+
+  submit.innerText = "Submit";
+
+  dialog.innerText = "this opened dialog";
+  dialog.appendChild(submit);
+
+  content.appendChild(dialog);
+
+  dialog.showModal();
+
+  submit.addEventListener("click", dialogSubmitted);
+
+};
+
+function dialogSubmitted() {
+  const dialog = document.querySelector("dialog");
+
+  dialog.close();
+  dialog.remove();
+};
+
