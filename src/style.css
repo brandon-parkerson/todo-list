@@ -80,3 +80,36 @@ li {
     margin-right: 10px;
 }
 
+#newDialog {
+    margin: auto;
+    height: 45%;
+    width: 35%;
+    min-height: fit-content;
+    min-width: 30%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: fit-content;
+}
+
+
+form label,
+form input,
+form textarea,
+form button {
+    width: 50%; /* Ensure form elements take full width */
+    margin-bottom: 15px; /* Space between form elements */
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input {
+    margin-left: 15px;
+}

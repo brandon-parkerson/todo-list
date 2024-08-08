@@ -28,28 +28,32 @@ function newProjectListener() {
 
 function newDialog() {
   const content = document.querySelector(".content");
-  const dialog = document.createElement("dialog");
-  const submit = document.createElement("button");
-
-  submit.classList.add("dialog-submit");
-
-  submit.innerText = "Submit";
-
-  dialog.innerText = "this opened dialog";
-  dialog.appendChild(submit);
-
-  content.appendChild(dialog);
-
+  const dialog = document.querySelector("dialog");
+  const submit = document.querySelector("#submit");
+  const cancel = document.querySelector("#cancel");
+  
   dialog.showModal();
-
   submit.addEventListener("click", dialogSubmitted);
+  cancel.addEventListener("click", cancelForm)
 
 };
 
-function dialogSubmitted() {
+function dialogSubmitted(event) {
   const dialog = document.querySelector("dialog");
+  const form = document.querySelector("form");
+  event.preventDefault();
+  form.reset();
+  
+  dialog.close();
+};
+
+function cancelForm(event) {
+  const dialog = document.querySelector("dialog");
+  const form = document.querySelector("form");
+  event.preventDefault();
+  form.reset();
 
   dialog.close();
-  dialog.remove();
 };
+
 

@@ -27,5 +27,21 @@
         <div class="card" id="card3">Card 3</div>
         <div class="card" id="card3">Card 3</div>
     </div>
+    <dialog id="newDialog">
+        <form>
+            <label for="title">Project Title</label>
+            <input type="text" name="title" id="title" placeholder="Project Title">
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
+            <label for="date">Due Date</label>
+            <input type="date" name="date" id="date">
+            <div class="checkbox-container">
+                <label for="priority">Priority</label>
+                <input type="checkbox" name="priority" id="priority" value="priority">
+            </div>
+            <button id="submit">Submit</button>
+            <button id="cancel">Cancel</button>
+        </form>
+    </dialog>
 </body>
 </html>
