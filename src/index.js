@@ -2,7 +2,7 @@ import './style.css';
 import businessLogo from './images/business-logo.jpg';
 import { makeCard } from './card';
 
-const sideBar = document.querySelector(".side-bar");
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const img = document.querySelector('img');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     makeCard();
     newProjectListener();
-    
+    toDoListener();
   });
 
 
@@ -21,7 +21,6 @@ function newProjectListener() {
 };
 
 function newDialog() {
-  const content = document.querySelector(".content");
   const dialog = document.querySelector("dialog");
   const submit = document.querySelector("#submit");
   const cancel = document.querySelector("#cancel");
@@ -35,18 +34,20 @@ function newDialog() {
 function dialogSubmitted(event) {
   const dialog = document.querySelector("dialog");
   const form = document.querySelector("form");
+  
 
   const title = form.querySelector("#title").value;
   const description = form.querySelector("#description").value;
   const date = form.querySelector("#date").value;
   const priority = form.querySelector("#priority").checked;
-
+  const list = document.querySelector("#todoListContainer");
   const newCard = makeCard(title, description, date, priority);
 
   addCardToPage(newCard);
 
   event.preventDefault();
   form.reset();
+  list.innerText = ``;
   
   dialog.close();
 };
@@ -54,7 +55,11 @@ function dialogSubmitted(event) {
 function cancelForm(event) {
   const dialog = document.querySelector("dialog");
   const form = document.querySelector("form");
+  const list = document.querySelector("#todoListContainer");
+
+  
   event.preventDefault();
+  list.innerText = ``;
   form.reset();
 
   dialog.close();
@@ -79,4 +84,20 @@ function addCardToPage(card) {
   content.appendChild(cardElement);
 };
 
+function toDoListener() {
+    const button = document.querySelector("#addTodo");
 
+    button.addEventListener("click", handleToDoButton);
+}
+
+function handleToDoButton() {
+    let todoItem = document.querySelector("#todo").value;
+    const container = document.querySelector("#todoListContainer");
+
+    container.innerHTML += `<ul class="todo-list-dialog">
+        <li>${todoItem}</li>
+    </ul>`;
+
+    document.getElementById("todo").value = "";
+    
+};

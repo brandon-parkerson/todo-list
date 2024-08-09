@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UMUSTDO-LIST</title>
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="side-bar">
@@ -21,7 +21,7 @@
     </div>
     <h1 class="projects-title">Projects</h1>
     <div class="content">
-        
+        <!-- Cards will be added here -->
     </div>
     <dialog id="newDialog">
         <form>
@@ -33,11 +33,18 @@
             <input type="date" name="date" id="date">
             <div class="checkbox-container">
                 <label for="priority">Priority</label>
-                <input type="checkbox" name="priority" id="priority" value="priority">
+                <input type="checkbox" name="priority" id="priority">
+            </div>
+            <label for="todo">Add To-Do Item</label>
+            <input type="text" name="todo" id="todo" placeholder="New To-Do Item">
+            <button type="button" id="addTodo">Add To-Do</button>
+            <div id="todoListContainer">
+                
             </div>
             <button id="submit">Submit</button>
             <button id="cancel">Cancel</button>
         </form>
     </dialog>
+    <script src="index.js"></script>
 </body>
 </html>

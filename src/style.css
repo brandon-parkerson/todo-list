@@ -82,7 +82,7 @@ li {
 
 #newDialog {
     margin: auto;
-    height: 45%;
+    height: 65%;
     width: 35%;
     min-height: fit-content;
     min-width: 30%;
@@ -113,3 +113,24 @@ form button {
 .checkbox-container input {
     margin-left: 15px;
 }
+
+#todoListContainer {
+    width: 100%;
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+
+
+.card #todoList div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.card #todoList input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
