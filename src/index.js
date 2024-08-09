@@ -82,8 +82,8 @@ function addCardToPage(card) {
         <p>Priority: ${card.priority ? "High" : "Normal"}</p>
         <div class="todos-container">
             <h4>TO-DO List:</h4>
-            <ul>
-            ${card.todos.map(todo => `<li>${todo}</li>`).join('')}
+            <ul class="mapped-list">
+            ${card.todos.map(todo => `<li><input type="checkbox" class="list-checkbox">${todo}</li>`).join('')}
             </ul>
         <button class="delete">Delete</button>
     `;

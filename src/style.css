@@ -123,16 +123,11 @@ form button {
 
 
 
-.card #todoList div {
+.card {
     display: flex;
-    align-items: center;
-    margin-bottom: 5px;
+    flex-direction: column;
 }
 
-.card #todoList input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-.delete {
-   
+.list-checkbox {
+    margin-right: 5px;
 }
