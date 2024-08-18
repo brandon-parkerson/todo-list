@@ -8,9 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = document.querySelector('img');
     img.src = businessLogo;
 
+    retrieveCards()
     makeCard();
     newProjectListener();
     toDoListener();
+    
+    
   });
 
 let todos = [];
@@ -75,24 +78,33 @@ function addCardToPage(card) {
 
   const cardElement = document.createElement("div");
   cardElement.classList.add("card");
-    cardElement.innerHTML = `
-        <h3>${card.title}</h3>
-        <p>${card.description}</p>
-        <p>Due Date: ${card.date}</p>
-        <p>Priority: ${card.priority ? "High" : "Normal"}</p>
-        <div class="todos-container">
-            <h4>TO-DO List:</h4>
-            <ul class="mapped-list">
-            ${card.todos.map(todo => `<li><input type="checkbox" class="list-checkbox">${todo}</li>`).join('')}
-            </ul>
-        <button class="delete">Delete</button>
-    `;
-    cardElement.querySelector(".delete").addEventListener("click", function() {
-      content.removeChild(cardElement);
+
+  // Safely handle the todos array
+  const todosHTML = Array.isArray(card.todos)
+    ? card.todos.map(todo => `<li><input type="checkbox" class="list-checkbox">${todo}</li>`).join('')
+    : '';
+
+  cardElement.innerHTML = `
+    <h3>${card.title}</h3>
+    <p>${card.description}</p>
+    <p>Due Date: ${card.date}</p>
+    <p>Priority: ${card.priority ? "High" : "Normal"}</p>
+    <div class="todos-container">
+        <h4>TO-DO List:</h4>
+        <ul class="mapped-list">
+        ${todosHTML}
+        </ul>
+    </div>
+    <button class="delete">Delete</button>
+  `;
+
+  cardElement.querySelector(".delete").addEventListener("click", function() {
+    content.removeChild(cardElement);
   });
 
   content.appendChild(cardElement);
 };
+
 
 function toDoListener() {
     const button = document.querySelector("#addTodo");
@@ -114,4 +126,35 @@ function handleToDoButton() {
 
     document.getElementById("todo").value = "";
     
+};
+
+// Checks for local storage availability
+
+function storageAvailable(type) {
+  let storage;
+  try {
+    storage = window[type];
+    const x = "__storage_test__";
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return (
+      e instanceof DOMException &&
+      e.name === "QuotaExceededError" &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      storage &&
+      storage.length !== 0
+    );
+  }
+}
+
+function retrieveCards() {
+  const retrievedCards = JSON.parse(localStorage.getItem('cards')) || [];
+
+  // This loops through the array that was retrieved and calls on the function that adds the card to the page
+
+  retrievedCards.forEach(card => {
+    addCardToPage(card);
+  });
 };
