@@ -1,7 +1,9 @@
 const Cards = [];
 
 function makeCard(title, description, date, priority, todos) {
-    const card = { title, description, date, priority, todos };
+    const id = Date.now();
+    const card = { id, title, description, date, priority, todos };
+    
     
     // Retrieve existing cards from localStorage
     let storedCards = JSON.parse(localStorage.getItem('cards')) || [];

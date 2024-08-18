@@ -99,7 +99,7 @@ function addCardToPage(card) {
   `;
 
   cardElement.querySelector(".delete").addEventListener("click", function() {
-    content.removeChild(cardElement);
+    removeCardFromPage(card.id, cardElement);
   });
 
   content.appendChild(cardElement);
@@ -157,4 +157,14 @@ function retrieveCards() {
   retrievedCards.forEach(card => {
     addCardToPage(card);
   });
+};
+
+function removeCardFromPage(id, cardElement) {
+  const content = document.querySelector(".content");
+  content.removeChild(cardElement);
+
+  // Remove the card from localStorage
+  let storedCards = JSON.parse(localStorage.getItem('cards')) || [];
+  storedCards = storedCards.filter(card => card.id !== id);
+  localStorage.setItem('cards', JSON.stringify(storedCards));
 };
