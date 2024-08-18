@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = businessLogo;
 
     retrieveCards()
-    makeCard();
+    
     newProjectListener();
     toDoListener();
     
